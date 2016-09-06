@@ -22,7 +22,6 @@ function popup() {
 }
 
 	window.onload=function(){
-
 		$("#contents").click(function(){ 
 		$("#content").load("Contents.html"); 
 		}); 
@@ -73,6 +72,20 @@ $(function(){
 		$('#open_button').click(function(){
 			$('#dialog').dialog('open')
 		});
+		
+		
+		$('#dialog_sign').dialog(
+				{
+					 autoOpen:false,
+					 position:"center",
+				     width : "330px",
+				     resizable:false
+				}		
+			);
+
+			$('#sign_button').click(function(){
+				$('#dialog_sign').dialog('open')
+			});
 	
 }); 
 
@@ -254,7 +267,8 @@ font-weight: bold;
 	<div id="leftnav">
 		<ul id="navlist">
 		<br>
-		<li><a href="#">Sign-in</a></li>
+		<li><a href="#" id="sign_button" style="background-color: gray">Register</a></li>
+		<li><a href="#"></a></li>
 		<br>
 		<li><a href="#" id="open_button" style="background-color: gray">Login</a></li>
 		</ul>
@@ -282,7 +296,7 @@ font-weight: bold;
 
    <!-- info Login_pop_up -->   	
    <div id="dialog" title="Login">
-   	    <div class="container">
+   	 <div class="container">
       <div class="row">
         <div class="page-header">
         </div>
@@ -312,6 +326,14 @@ font-weight: bold;
       </div>
     </div>
    </div>
+   
+   
+  <!-- info Login_pop_up -->   	
+   <div id="dialog_sign" title="Register">
+   	<h3>가입창 넣을거다</h3>
+   </div>
+   
+   
 </body>
 
 

@@ -21,6 +21,19 @@
 			$('#open_button_1').click(function(){
 				$('#notice').dialog('open')
 			});
+			
+			var book = [
+			            "JAVA의 정석",
+			            "안드로이드 스튜디오",
+			            "JAVA언어로 배우는 디자인 패턴 입문",
+			            "정보처리기사",
+			             ];
+			         
+			         $("#tags").autocomplete(book, {
+			            matchContains : true,
+			            source : book
+			         });
+			
   } );
 
   
@@ -154,7 +167,8 @@ p {margin-left: 150px;}
   </div>
   
     <div id="tabs-4">
-    
+       <label for="tags">책 제목 </label> <input id="tags">
+       <button id="btn">검색</button>
     </div>	
  
  
