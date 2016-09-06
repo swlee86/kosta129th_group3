@@ -21,7 +21,6 @@ img {
 
 p {margin-left: 150px;}
 #accordion {margin-right: 50px;}
-
 </style>
 <!-- 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
@@ -49,15 +48,39 @@ p {margin-left: 150px;}
          $speech.css("fontSize", num + unit);
       });
    });
+   
+	$(function(){
+		$('#dialog').dialog(
+			{
+				  autoOpen:false,
+				  buttons: {
+								확인했어요:function(){
+									$('#dialog').dialog('close');
+						 		}
+				           }
+					}		
+			
+			);
+
+			$('#open_button').click(function(){
+				$('#dialog').dialog('open')
+			});
+	});
+   
+   
+   
+   
 </script>
 </head>
 <body>
    <h1>IT 분야</h1>
 
    <div id="switcher">
+      <button id="open_button">이용 안내</button>
       <button id="switcher-large">Font SizeUP (+)</button>
       <button id="switcher-small">Font SizeDown (-)</button>
    </div>
+
 
    <div id="accordion">
       <h3>JAVA의 정석</h3>
@@ -109,6 +132,15 @@ p {margin-left: 150px;}
             순서도를 읽는 방법인 디버깅 방법, 그리고 알고리즘 유형별로 대표적인 문제를 선정하여 효율적으로 순서도에 답을 찾아 넣는
             방법을 동영상 강의와 함께 제공한다.</p>
       </div>
+   </div>
+   
+   <!-- info pop-up -->   	
+   <div id="dialog" title="페이지 이용안내">
+   	   <ul>
+		<li>해당 페이지에서 이미지를 누르시면 Naver Book 스토어로 연결됩니다</li>
+		<li>Font SizeUP을 누르시면 폰트 크기가 한단계씩 증가합니다.</li>
+		<li>Font SizeDOWN을 누르시면 폰트 크기가 한단계씩 감소합니다.</li>
+	   </ul>
    </div>
 
 </body>
