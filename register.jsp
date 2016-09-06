@@ -2,7 +2,7 @@
 <%@page import="sun.nio.cs.ext.ISCII91"%>
 <%@ page contentType="text/html;charset=utf-8" import="java.sql.*" %>
 <%
- request.setCharacterEncoding("utf-8"); 
+ request.setCharacterEncoding("UTF-8"); 
  String email = request.getParameter("email");     
  String pswd = request.getParameter("pswd");
  String name = request.getParameter("name");
