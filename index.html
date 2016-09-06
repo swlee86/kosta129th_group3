@@ -13,14 +13,6 @@
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
 <script type="text/javascript">
-function popup() {
-    var left1,top1;
-    left1=(screen.width-300)/2;
-    top1=(screen.height-300)/2;
-    window.open("login.html","_blank", "left="+left1+", top="+top1+",width=500, height=500");
-    
-}
-
 	window.onload=function(){
 		$("#contents").click(function(){ 
 		$("#content").load("Contents.html"); 
@@ -56,7 +48,6 @@ function popup() {
 		}); 
 		
 
-		
 	};
 
 $(function(){ 
@@ -86,6 +77,12 @@ $(function(){
 			$('#sign_button').click(function(){
 				$('#dialog_sign').dialog('open')
 			});
+			
+			$('#register_go').click(function(){
+				$('#dialog').dialog('close')
+				$('#dialog_sign').dialog('open')
+			})
+			
 }); 
 </script>
 
@@ -314,8 +311,8 @@ font-weight: bold;
           <div class="login-box well">
         <form accept-charset="UTF-8" role="form" method="post" action="">
             <div class="form-group">
-                <label for="username-email">이메일 or 아이디</label>
-                <input name="user_id" value='' id="username-email" placeholder="E-mail or Username" type="text" class="form-control" />
+                <label for="username-email">이메일</label>
+                <input name="user_id" value='' id="username-email" placeholder="E-mail" type="text" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="password">비밀번호</label>
@@ -327,7 +324,7 @@ font-weight: bold;
             <span class='text-center'><a href="#" class="text-sm">비밀번호 찾기</a></span>
             <hr />
             <div class="form-group">
-                <a href="" class="btn btn-default btn-block m-t-md"> 회원가입</a>
+                <a href="" class="btn btn-default btn-block m-t-md" id="register_go">회원가입</a>
             </div>
         </form>
           </div>
@@ -345,17 +342,17 @@ font-weight: bold;
 	  <h1>회원가입 <small>일반회원가입</small></h1>
     </div>
    </article>
-    <form class="form-horizontal">
+    <form class="form-horizontal" action="register.jsp" method="post">
     <div class="form-group">
     <label for="inputEmail" class="col-sm-2 control-label">이메일</label>
     <div class="col-sm-6">
-    <input type="email" class="form-control" id="inputEmail" placeholder="이메일">
+    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="이메일">
     </div>
     </div>
     <div class="form-group">
     <label for="inputPassword" class="col-sm-2 control-label">비밀번호</label>
     <div class="col-sm-6">
-    <input type="password" class="form-control" id="inputPassword" placeholder="비밀번호">
+    <input type="password" class="form-control" id="inputPassword" name="pswd" placeholder="비밀번호">
     <p class="help-block">숫자, 특수문자 포함 8자 이상</p>
     </div>
     </div>
@@ -367,25 +364,19 @@ font-weight: bold;
     </div>
     </div>
     <div class="form-group">
-    <label for="inputRipple" class="col-sm-2 control-label">리플주소</label>
-    <div class="col-sm-6">
-    <input type="text" class="form-control" id="inputRipple" placeholder="리플주소">
-    </div>
-    </div>
-    <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label">이름</label>
     <div class="col-sm-6">
-    <input type="text" class="form-control" id="inputName" placeholder="이름">
+    <input type="text" class="form-control" id="inputName" name="name" placeholder="이름">
     </div>
     </div>
     <div class="form-group">
     <label for="inputNumber" class="col-sm-2 control-label">휴대폰번호</label>
     <div class="col-sm-4">
-    <input type="text" class="form-control" id="inputNumber" placeholder="휴대폰번호">
+    <input type="text" class="form-control" id="inputNumber" name="phnum" placeholder="휴대폰번호">
       <p class="help-block">- 없이 적어주세요.</p>
     </div>
       <div class="col-sm-2">
-      <a class="btn btn-default" href="#" role="button">인증번호 전송</a>
+      <a class="btn btn-default" href="#" role="button">인증번호 전송(현재 미사용)</a>
       </div>
     </div>
     <div class="form-group">
@@ -406,7 +397,7 @@ font-weight: bold;
     <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label"></label>
     <div class="col-sm-6">
-      <button type="submit" class="btn btn-primary">회원가입</button>
+      <button type="submit" class="btn btn-primary" value="register">회원가입</button>
     </div>
     </div>
     </form>
