@@ -5,11 +5,10 @@
 <title>Java</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/blitzer/jquery-ui.css">
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
@@ -22,41 +21,46 @@ function popup() {
     
 }
 
- 
+	window.onload=function(){
+
+		$("#contents").click(function(){ 
+		$("#content").load("Contents.html"); 
+		}); 
+		
+		$("#member").click(function(){ 
+		$("#content").load("Member.html"); 
+		}); 
+		
+		$("#freeboard").click(function(){ 
+		$("#content").load("Freeboard.html"); 
+		}); 
+		
+		
+		$("#guestbook").click(function(){ 
+		$("#content").load('GuestBook.html'); 
+		});
+		
+		$("#databoard").click(function(){ 
+		$("#content").load('DataBoard.html'); 
+		}); 
+		
+		$("#mainbutton").click(function(){ 
+		$("#content").load('Member.html'); 
+		}); 
+		
+		$("#source").click(function(){ 
+		$("#content").load('Source.html'); 
+		}); 
+		
+		$("#bookinfo").click(function(){ 
+		$("#content").load('bookmain.html'); 
+		}); 
+		
+
+		
+	};
+
 $(function(){ 
-	$("#contents").click(function(){ 
-	$("#content").load("Contents.html"); 
-	}); 
-	
-	$("#member").click(function(){ 
-	$("#content").load("Member.html"); 
-	}); 
-	
-	$("#freeboard").click(function(){ 
-	$("#content").load("Freeboard.html"); 
-	}); 
-	
-	
-	$("#guestbook").click(function(){ 
-	$("#content").load('GuestBook.html'); 
-	});
-	
-	$("#databoard").click(function(){ 
-	$("#content").load('DataBoard.html'); 
-	}); 
-	
-	$("#mainbutton").click(function(){ 
-	$("#content").load('Member.html'); 
-	}); 
-	
-	$("#source").click(function(){ 
-	$("#content").load('Source.html'); 
-	}); 
-	
-	$("#bookinfo").click(function(){ 
-	$("#content").load('bookinfo.html'); 
-	}); 
-	
 	$('#dialog').dialog(
 			{
 				 autoOpen:false,
