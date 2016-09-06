@@ -14,7 +14,7 @@
 
 <script type="text/javascript">
 $(function(){ 
-	$('#dialog').dialog(
+	$('#login_dialog').dialog(
 			{
 				 autoOpen:false,
 			     width : "330px",
@@ -24,11 +24,11 @@ $(function(){
 		);
 
 		$('#open_button').click(function(){
-			$('#dialog').dialog('open')
+			$('#login_dialog').dialog('open')
 		});
 		
 		
-		$('#dialog_sign').dialog(
+		$('#register_dialog').dialog(
 				{
 					 autoOpen:false,
 				     width : "800px",
@@ -38,13 +38,16 @@ $(function(){
 			);
 
 			$('#sign_button').click(function(){
-				$('#dialog_sign').dialog('open')
+				$('#register_dialog').dialog('open')
 			});
 			
 			$('#register_go').click(function(){
-				$('#dialog').dialog('close')
-				$('#dialog_sign').dialog('open')
-			})
+				$('#login_dialog').dialog('close')
+				$('#register_dialog').dialog('open')
+			});
+			
+			
+			
 			
 			$("#contents").click(function(){ 
 				$("#content").load("Contents.html"); 
@@ -298,7 +301,7 @@ font-weight: bold;
 
 
    <!-- info Login_pop_up -->   	
-   <div id="dialog" title="Login">
+   <div id="login_dialog" title="Login">
    	 <div class="container">
       <div class="row">
         <div class="page-header">
@@ -320,7 +323,7 @@ font-weight: bold;
             <span class='text-center'><a href="#" class="text-sm">비밀번호 찾기</a></span>
             <hr />
             <div class="form-group">
-                <a href="" class="btn btn-default btn-block m-t-md" id="register_go">회원가입</a>
+                <a href="#" class="btn btn-default btn-block m-t-md" id="register_go">회원가입</a>
             </div>
         </form>
           </div>
@@ -331,7 +334,7 @@ font-weight: bold;
    
    
   <!-- info Register_pop_up -->   	
-   <div id="dialog_sign" title="Register">
+   <div id="register_dialog" title="Register">
    	  <div class="contentwrap">
   <article class="container">
     <div class="page-header">

@@ -6,7 +6,7 @@
 
 <script>
   $( function() {
-	  $( "#tabs" ).tabs();
+	$( "#tabs" ).tabs();
   	$('#notice').dialog(
 			{
 				  autoOpen:false,
@@ -14,7 +14,8 @@
 								확인했어요:function(){
 									$('#notice').dialog('close');
 						 		}
-				           }
+				           },
+				  modal:true
 					}		
 			);
 
