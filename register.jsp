@@ -1,4 +1,4 @@
-<%@page import="javafx.scene.control.Alert"%>
+﻿<%@page import="javafx.scene.control.Alert"%>
 <%@page import="sun.nio.cs.ext.ISCII91"%>
 <%@ page contentType="text/html;charset=utf-8" import="java.sql.*" %>
 <%
@@ -7,7 +7,7 @@
  String pswd = request.getParameter("pswd");
  String name = request.getParameter("name");
  String phnum = request.getParameter("phnum");
- 
+ //아 짜증나요
 // out.print(email+"/"+pswd+"/"+name+"/"+phnum);
 
 Connection conn = null;
