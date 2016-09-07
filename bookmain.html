@@ -3,10 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <script>
+
   $( function() {
 	$( "#tabs" ).tabs();
+		var book = {
+			title:[
+		            "JAVA의 정석",
+		            "안드로이드 스튜디오",
+		            "JAVA언어로 배우는 디자인 패턴 입문",
+		            "정보처리기사",
+		             ]
+				}
+	 $('#dialog_booksearch').dialog(		
+				{
+				 autoOpen:false,
+			     width : "800px",
+			     resizable:false,
+			     modal:true
+					
+				}
+			);
+	  $('#searchBtn').click(function(){		 
+		  	var message = "";
+		  	var searchKey = $('#tags').val();
+		  	var j ="";
+		 	for(var i = 0; i < book.title.length; i++){
+		 		if(searchKey == book.title[i]){
+		 			j = book.title[i]
+		 			$('#lists').remove();
+		 			$('#searchlist').append("<li id='lists'>"+j+"<br></li>");
+		 			$('#dialog_booksearch').dialog('open')
+					break;
+		 			}else if(searchKey == ""){
+		 				//alert("false")
+			 			$('#lists').remove();
+			 			$('#searchlist').append("<li id='lists'>도서명을 입력하고 검색을 눌러주세요.<br></li>");
+			 			$('#dialog_booksearch').dialog('open')
+		 			}else{
+		 				$('#lists').remove();
+			 			$('#searchlist').append("<li id='lists'>입력하신 도서는 리스트에 없습니다.[입력하신 도서명 : "+searchKey+"]<br></li>");
+			 			$('#dialog_booksearch').dialog('open')
+		 			}
+		  			
+		 	}
+	  });
+	         
+			         $("#tags").autocomplete(book, {
+			            matchContains : true,
+			            source : book.title
+			         });
+			
+			         
+			         
+	  
+
   	$('#notice').dialog(
 			{
 				  autoOpen:false,
@@ -15,7 +66,8 @@
 									$('#notice').dialog('close');
 						 		}
 				           },
-				  modal:true
+				  modal:true,
+				  width: "550px"
 					}		
 			);
 
@@ -23,18 +75,7 @@
 				$('#notice').dialog('open')
 			});
 			
-			var book = [
-			            "JAVA의 정석",
-			            "안드로이드 스튜디오",
-			            "JAVA언어로 배우는 디자인 패턴 입문",
-			            "정보처리기사",
-			             ];
-			         
-			         $("#tags").autocomplete(book, {
-			            matchContains : true,
-			            source : book
-			         });
-			
+	
   } );
 
   
@@ -63,6 +104,8 @@
   <style type="text/css">
   #tabs {margin-right: 50px}
   
+  #lists {text-align: left;}
+  
   img {
    width: 130px;
    height: 180px;
@@ -88,7 +131,7 @@ p {margin-left: 150px;}
     <li><a href="#tabs-1">IT</a></li>
     <li><a href="#tabs-2">자기계발</a></li>
     <li><a href="#tabs-3">소설</a></li>
-    <li><a href="#tabs-4">도서검색</a></li>
+    <li><a href="#tabs-4">도서검색(현재 자동완성만 구현)</a></li>
   </ul>
   <div id="tabs-1">
    <div id="switcher">
@@ -111,7 +154,7 @@ p {margin-left: 150px;}
             자세하게 설명하고 있다.</p>
       </div>
       <h3>안드로이드 스튜디오</h3>
-      <div class="speech">
+      <div class="speech" id="speech">
       <a href="http://book.naver.com/bookdb/book_detail.nhn?bid=7239801" target="_blank"><img alt="안드로이드" src="images/and.PNG" align="left"></a>
          <p>저자 정재곤|이지스퍼블리싱 |2016.01.14 페이지 864|9788997390847|판형 규격외 변형 도서관
             소장 정보 국립중앙도서관</p>
@@ -125,8 +168,7 @@ p {margin-left: 150px;}
             빠르게 적응할 수 있도록 안내한다.</p>
       </div>
       <h3>JAVA 언어로 배우는 디자인 패턴 입문</h3>
-      <div class="speech">
-      
+      <div class="speech" id="speech">
          <a href="http://book.naver.com/bookdb/book_detail.nhn?bid=4529127" target="_blank"><img alt="디자인패턴" src="images/patt.PNG" align="left"></a>
          <p>저자 유키 히로시|역자 이규흥|영진닷컴 |2008.05.01 원제 Java言語で學ぶデザインパタ-ン入門 페이지
             530| 9788931436914개정 개정</p>
@@ -138,7 +180,7 @@ p {margin-left: 150px;}
             유익한 기법이다.</p>
       </div>
       <h3>정보처리기사</h3>
-      <div class="speech">
+      <div class="speech" id="speech">
          <a href="http://book.naver.com/bookdb/book_detail.nhn?bid=10975607" target="_blank"><img alt="정보처리기사" src="images/ss.PNG" align="left"></a>
          <p>저자 한기준, 김기윤, 최영근, 김정준, 강윤석, 길벗R&D|길벗 |2016.01.29 페이지 972|
             9791186978481|판형 규격외 변형 도서관 소장 정보 국립중앙도서관</p>
@@ -155,19 +197,30 @@ p {margin-left: 150px;}
     
   </div>
   <div id="tabs-2">
-		준비 중입니다
+		준비 중입니다. 추후 도서 추가 예정
   </div>
  
  
  
  
   <div id="tabs-3">
-		준비 중입니다
+		준비 중입니다. 추후 도서 추가 예정
   </div>
   
     <div id="tabs-4">
-       <label for="tags">책 제목 </label> <input id="tags">
-       <button id="btn">검색</button>
+   <div class="container-fluid">
+	<div class="jumbotron text-center">
+		<h3 style="color:white;">도서 검색</h3>
+		<div class="ui-widget">
+		<br/>
+		<input id="tags" size="25" placeholder="검색하실 단어를 입력하세요">
+		<button type="button" class="btn btn-danger" id="searchBtn"> 검색</button>
+		</div>
+	</div>
+</div> 
+       
+       
+       
     </div>	
  </div>
  
@@ -180,5 +233,15 @@ p {margin-left: 150px;}
 		<li>Font SizeDOWN을 누르시면 폰트 크기가 한단계씩 감소합니다.</li>
 	   </ul>
    </div>
+   
+ <!--  도서검색 Dialog	 -->
+	<div id="dialog_booksearch" title="도서 검색 결과">
+	<ul>
+		<li id="searchlist">검색하신 도서 리스트<br></li>
+	</ul>
+			
+		
+	</div>  
+   
 </body>
 </html>
