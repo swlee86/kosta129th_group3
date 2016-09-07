@@ -27,7 +27,6 @@ ResultSet rs = null;
 		 do{
 			 out.print("해당 아이디는 이미 존재합니다.");
 		 }while(rs.next());
-		 
 	 }else{
 		 String sql2 = "INSERT INTO homepage(email, name, pswd, phnum)  VALUES('"+email+"','"+name+"','"+pswd+"','"+phnum+"')";
 		 stmt.executeUpdate(sql2);
@@ -39,9 +38,9 @@ ResultSet rs = null;
  catch(Exception e){
   out.println(e);
  }finally{
-/* 	 stmt.close();
+ 	 stmt.close();
 	 rs.close();
-	 conn.close(); */
+	 conn.close();
  }
 
  %>
