@@ -15,6 +15,26 @@
 		            "정보처리기사",
 		             ]
 				}
+		var various = {
+				it:[
+			            "JAVA의 정석",
+			            "안드로이드 스튜디오",
+			            "JAVA언어로 배우는 디자인 패턴 입문",
+			            "정보처리기사",
+			             ],
+			    fiction:[
+			             
+			             
+			             
+			             
+			             ],
+			    Essey:[
+			           
+			           
+			           
+			           ]
+					}
+		
 	 $('#dialog_booksearch').dialog(		
 				{
 				 autoOpen:false,
@@ -28,11 +48,18 @@
 		  	var message = "";
 		  	var searchKey = $('#tags').val();
 		  	var j ="";
+		  	var l ="";
 		 	for(var i = 0; i < book.title.length; i++){
 		 		if(searchKey == book.title[i]){
 		 			j = book.title[i]
+		 			for(var k=0; k<various.it.length; k++){
+		 				if(searchKey == various.it[k]){
+		 					l="IT";	
+		 				}
+		 			}
+		 			
 		 			$('#lists').remove();
-		 			$('#searchlist').append("<li id='lists'>"+j+"<br></li>");
+		 			$('#searchlist').append("<li id='lists'>"+j+" ▶ 해당 도서는 [ "+l+" ]탭에 있습니다<br></li>");
 		 			$('#dialog_booksearch').dialog('open')
 					break;
 		 			}else if(searchKey == ""){
