@@ -30,7 +30,7 @@ Boolean isLogin = false; //로그인 확인
 		}else{
 			idcookie.setMaxAge(0);
 		}
-   	response.sendRedirect("index.jsp");
+   	response.sendRedirect("index.html");
   }
   if( !isLogin ){
    	out.print( "아이디와 비밀번호를 확인하세요" );

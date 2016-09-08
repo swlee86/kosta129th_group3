@@ -7,7 +7,7 @@
  String pswd = request.getParameter("pswd");
  String name = request.getParameter("name");
  String phnum = request.getParameter("phnum");
- //아 짜증나요
+
 // out.print(email+"/"+pswd+"/"+name+"/"+phnum);
 
 Connection conn = null;

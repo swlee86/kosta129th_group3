@@ -82,9 +82,57 @@ $(function(){
 				$("#bookinfo").click(function(){ 
 				$("#content").load('bookmain.html'); 
 				}); 
-			
+
+	
+	//로그인시 고객 정보 확인(제약)
+$('#register_gogo').click(function(){
+	if($('#inputEmail').val()==""){
+		alert("ID는 필수 값입니다");
+		$('#inputEmail').focus();
+		return false;
+	}else{
+			if($('#pswd').val()==""){
+				alert("비밀번호는 필수 입력 값입니다")
+				$('#pswd').focus();
+				return false;
+		}else{
+			if($('#inputPasswordCheck').val()==""){
+				alert("비밀번호를 확인차 한 번 더 입력해 주세요")
+				$('#inputPasswordCheck').focus();
+				return false;
+			}else{
+				if($('#pswd').val()!=$('#inputPasswordCheck').val()){
+					alert("입력하신 비밀번호가 서로 일치하지 않습니다. 확인해 주세요")
+					$('#pswd').focus();
+					return false;
+				}else{
+					if($('#inputName').val()==""){
+						alert("이름을 반드시 입력해 주세요");
+						$('#inputName').focus();
+						return false;
+					}else{
+						if($('#inputNumber').val()==""){
+							alert("휴대전화 번호는 필수 입력 값입니다");
+							$('#inputNumber').focus();
+							return false;
+						}else{
+							if($("input[name='agree']:checkbox:checked").size() == 0){				
+							alert("이용약관에 동의하셔야 이용이 가능합니다.");
+							return false;
+								}else{
+										$('#signForm').submit();
+										}
+									}
+								}
+							}
+						}
+					}
+				}		
+		});
 }); 
 </script>
+
+
 
 <style type="text/css">
 .navbar {
@@ -188,7 +236,7 @@ font-weight: bold;
 
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 
 <div id="container">
 	<!-- Top 영역 -->
@@ -213,6 +261,9 @@ font-weight: bold;
 		copyright@3조
 	</div>
 </div>
+
+
+
 
    <!-- info Login_pop_up -->
 <%
@@ -251,7 +302,7 @@ font-weight: bold;
             <span class='text-center'><a href="#" class="text-sm">비밀번호 찾기</a></span>
             <hr />
             <div class="form-group">
-                <a href="#" class="btn btn-default btn-block m-t-md" id="register_go">회원가입</a>
+                <a href="#" class="btn btn-default btn-block m-t-md" id="DDD">회원가입</a>
             </div>
         </form>
           </div>
@@ -281,14 +332,14 @@ font-weight: bold;
     <div class="form-group">
     <label for="inputPassword" class="col-sm-2 control-label">비밀번호</label>
     <div class="col-sm-6">
-    <input type="password" class="form-control" id="inputPassword" name="pswd" placeholder="비밀번호">
+    <input type="password" class="form-control" id="pswd" name="pswd" placeholder="비밀번호">
     <p class="help-block">숫자, 특수문자 포함 8자 이상</p>
     </div>
     </div>
        <div class="form-group">
     <label for="inputPasswordCheck" class="col-sm-2 control-label">비밀번호 확인</label>
     <div class="col-sm-6">
-    <input type="password" class="form-control" id="inputPasswordCheck" placeholder="비밀번호 확인">
+    <input type="password" class="form-control" id="inputPasswordCheck" name="inputPasswordCheck" placeholder="비밀번호 확인">
       <p class="help-block">비밀번호를 한번 더 입력해주세요.</p>
     </div>
     </div>
@@ -299,7 +350,7 @@ font-weight: bold;
     </div>
     </div>
     <div class="form-group">
-    <label for="inputNumber" class="col-sm-2 control-label">휴대폰번호</label>
+    <label for="inputNumber" class="col-sm-2 control-label" id=hpnum>휴대폰번호</label>
     <div class="col-sm-4">
     <input type="text" class="form-control" id="inputNumber" name="phnum" placeholder="휴대폰번호">
       <p class="help-block">- 없이 적어주세요.</p>
@@ -310,19 +361,19 @@ font-weight: bold;
     <label for="inputAgree" class="col-sm-2 control-label">약관 동의</label>
     <div class="col-sm-6 checkbox">
       <label>
-        <input id="agree" type="checkbox"> <a href="/agreement"> 이용약관</a>에 동의합니다.
+        <input id="agree" name="agree" type="checkbox"> <a href="#" id="agreement_open" > 이용약관</a>에 동의합니다.
     </label>
     </div>
   </div>
     <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label"></label>
     <div class="col-sm-6">
-      <button type="submit" class="btn btn-primary" value="register">회원가입</button>
+      <button type="submit" class="btn btn-primary" value="register" id="register_gogo">회원가입</button>
     </div>
     </div>
     </form>
    </div>
   </div> 
-   
+
 </body>
 </html>
