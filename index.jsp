@@ -298,25 +298,16 @@ font-weight: bold;
     <input type="text" class="form-control" id="inputNumber" name="phnum" placeholder="휴대폰번호">
       <p class="help-block">- 없이 적어주세요.</p>
     </div>
-      <div class="col-sm-2">
-      <a class="btn btn-default" href="#" role="button">인증번호 전송(현재 미사용)</a>
-      </div>
-    </div>
-    <div class="form-group">
-    <label for="inputNumberCheck" class="col-sm-2 control-label">인증번호 확인</label>
-    <div class="col-sm-6">
-    <input type="text" class="form-control" id="inputNumberCheck" placeholder="이름">
-    <p class="help-block">전송된 인증번호를 입력해주세요.</p>
-    </div>
-    </div>
-      <div class="form-group">
+   </div>
+
+   <div class="form-group">
     <label for="inputAgree" class="col-sm-2 control-label">약관 동의</label>
     <div class="col-sm-6 checkbox">
       <label>
         <input id="agree" type="checkbox"> <a href="/agreement"> 이용약관</a>에 동의합니다.
     </label>
     </div>
-    </div>
+  </div>
     <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label"></label>
     <div class="col-sm-6">
