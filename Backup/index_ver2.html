@@ -1,12 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page session="true" %>   
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Java</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
@@ -17,18 +14,7 @@
 
 <script type="text/javascript">
 $(function(){
-	$('#login_dialog').dialog(
-			{
-				 autoOpen:false,
-			     width : "330px",
-			     resizable:false,
-			     modal:true
-			}		
-		);
 
-		$('#open_button').click(function(){
-			$('#login_dialog').dialog('open')
-		});
 		
 		
 		$('#register_dialog').dialog(
@@ -49,7 +35,6 @@ $(function(){
 				$('#register_dialog').dialog('open')
 			});
 			
-
 			$("#contents").click(function(){ 
 				$("#content").load("Contents.html"); 
 				}); 
@@ -81,6 +66,10 @@ $(function(){
 				
 				$("#bookinfo").click(function(){ 
 				$("#content").load('bookmain.html'); 
+				});
+				
+				$("#open_button").click(function(){ 
+					$("#content").load('login.jsp'); 
 				}); 
 			
 }); 
@@ -191,43 +180,117 @@ font-weight: bold;
 <body>
 
 <div id="container">
-	<!-- Top 영역 -->
+	
 	<div id="header">
-	<jsp:include page="/CommonModule/Top.jsp"></jsp:include>
+	<!-- 	<span class="style1">헤더영역</span> -->
+		<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">Kosta 129th</a>
+    </div>
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#" id="member">Member</a></li>
+        <li><a href="#" id="contents">Content</a></li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Board<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#" id="freeboard">Free-Board</a></li>
+            <li><a href="#" id="databoard">Data(준비중)</a></li>
+            <li class="divider"></li>
+            <li><a href="#" id="source">Source(준비중)</a></li>
+          </ul>
+         </li>
+        
+        <!-- Utill메뉴 추가  -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utill<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#" id="bookinfo">도서 정보</a></li>
+            <li><a href="#" id="databoard">준비중</a></li>
+            <li class="divider"></li>
+            <li><a href="#" id="source">준비중</a></li>
+          </ul>
+         </li>
+         
+        <li><a href="#" id="guestbook">GuestBook<span class="sr-only">(current)</span></a></li>
+      </ul>
+      
+      <form class="navbar-form navbar-left" role="search" method=get action="http://www.google.co.kr/search" target="_blank">
+        <div class="form-group">
+          <input type=hidden name=ie value=utf-8/>
+          <input type=hidden name=oe value=utf-8/>
+          <input type=hidden name=hl value=ko />
+          <input type=text class="form-control" placeholder="Google Search" name=q size=20 maxlength=255 style=font-size:13pt value="" />
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://cafe.naver.com/kosta129" target="_blank">Kosta129기 Cafe</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Etc Link<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="https://www.oracle.com/index.html" target="_blank">Oracle</a></li>
+            <li><a href="http://www.eclipse.org/home/index.php" target="_blank">Eclipse</a></li>
+            <li class="divider"></li>
+            <li><a href="http://colorscripter.com/" target="_blank">Color Scripter</a></li>
+            <li class="divider"></li>
+            <li><a href="http://192.168.0.126/" target="_blank">강사님 FTP 주소</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 	</div>
 
 
-	<!-- Left 영역-->
+	<!--메뉴영역-->
 	<div id="leftnav">
-	<jsp:include page="/CommonModule/Left.jsp"></jsp:include>
+		<ul id="navlist" style="margin-top: 15px">
+		<li><a href="#" id="sign_button" style="background-color: gray">Register</a></li>
+		<li><a href="#"></a></li>
+		<li><a href="#" id="open_button" style="background-color: gray">Login</a></li>
+		</ul>
 	</div>
 	
 	
-	<!-- Content 영역-->
+
 	<div id="content">
-		<jsp:include page="/CommonModule/Content.jsp"></jsp:include>
+	<!-- 콘텐츠 중앙영역 -->
+		<div class="jumbotron">
+  			<h1>Hello, world!</h1>
+  				<p>kosta 129th 3조의 홈페이지에 오신 것을 환영합니다.</p>
+			  	<p><a class="btn btn-primary btn-lg" id="mainbutton" href="#" role="button">3조에 대해 알아봅시다</a></p>
+		</div>
 	</div>
 
-	<!-- footer 영역(footer도 jsp파일로 작업하여 연결 필요 --> 
+
 	<div align="center" id="footer">
-		copyright@3조
+	copyright@3조
 	</div>
+
 </div>
 
-   <!-- info Login_pop_up -->
-<%
-	session = request.getSession(true);
-	if( session.getAttribute("sessionId") != null){
-	
-%>
-	<script type="text/javascript">
-		window.onload=function(){
-			$("#leftnav").load("afterlogin.jsp");	
-		};
-	</script>
-  <%
- }else{
-  %>
+
+<!-- 
+   info Login_pop_up   	
    <div id="login_dialog" title="Login">
    	 <div class="container">
       <div class="row">
@@ -235,18 +298,17 @@ font-weight: bold;
         </div>
         <div class="col-md-3">
           <div class="login-box well">
-        <form accept-charset="UTF-8" role="form" method="post" action="loginConfirm.jsp">
+        <form accept-charset="UTF-8" role="form" method="post" action="">
             <div class="form-group">
                 <label for="username-email">이메일</label>
-                <input name="user_id" value='' id="user_id" placeholder="E-mail" type="text" class="form-control" />
+                <input name="user_id" value='' id="username-email" placeholder="E-mail" type="text" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="password">비밀번호</label>
                 <input name="password" id="password" value='' placeholder="Password" type="password" class="form-control" />
-            	<input type="checkbox" name="uselogin" id="uselogin">로그인 유지
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-default btn-login-submit btn-block m-t-md" value="login" />
+                <input type="submit" class="btn btn-default btn-login-submit btn-block m-t-md" value="Login" />
             </div>
             <span class='text-center'><a href="#" class="text-sm">비밀번호 찾기</a></span>
             <hr />
@@ -259,9 +321,7 @@ font-weight: bold;
       </div>
     </div>
    </div>
-<%
- 	}
-%>
+    -->
    
   <!-- info Register_pop_up -->   	
    <div id="register_dialog" title="Register">
@@ -304,16 +364,25 @@ font-weight: bold;
     <input type="text" class="form-control" id="inputNumber" name="phnum" placeholder="휴대폰번호">
       <p class="help-block">- 없이 적어주세요.</p>
     </div>
-   </div>
-
-   <div class="form-group">
+      <div class="col-sm-2">
+      <a class="btn btn-default" href="#" role="button">인증번호 전송(현재 미사용)</a>
+      </div>
+    </div>
+    <div class="form-group">
+    <label for="inputNumberCheck" class="col-sm-2 control-label">인증번호 확인</label>
+    <div class="col-sm-6">
+    <input type="text" class="form-control" id="inputNumberCheck" placeholder="이름">
+    <p class="help-block">전송된 인증번호를 입력해주세요.</p>
+    </div>
+    </div>
+      <div class="form-group">
     <label for="inputAgree" class="col-sm-2 control-label">약관 동의</label>
     <div class="col-sm-6 checkbox">
       <label>
         <input id="agree" type="checkbox"> <a href="/agreement"> 이용약관</a>에 동의합니다.
     </label>
     </div>
-  </div>
+    </div>
     <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label"></label>
     <div class="col-sm-6">
@@ -325,4 +394,7 @@ font-weight: bold;
   </div> 
    
 </body>
+
+
+
 </html>
