@@ -82,9 +82,7 @@ $(function(){
 				$("#bookinfo").click(function(){ 
 				$("#content").load('bookmain.html'); 
 				}); 
-<<<<<<< HEAD
 
-	
 	//로그인시 고객 정보 확인(제약)
 $('#register_gogo').click(function(){
 	if($('#inputEmail').val()==""){
@@ -130,13 +128,6 @@ $('#register_gogo').click(function(){
 					}
 				}		
 		});
-=======
-			/* 	
-				$("#bookinfo").click(function(){ 
-				$("#content").load('bookmain.html'); 
-				}); 
-			 */
->>>>>>> 3c1ae5a5dd2d8ec5abb808dca95a55e6074a3eb9
 }); 
 </script>
 
@@ -244,7 +235,7 @@ font-weight: bold;
 
 </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<body>
 
 <div id="container">
 	<!-- Top 영역 -->
@@ -369,11 +360,9 @@ font-weight: bold;
     <label for="inputAgree" class="col-sm-2 control-label">약관 동의</label>
     <div class="col-sm-6 checkbox">
       <label>
-<<<<<<< HEAD
+
         <input id="agree" name="agree" type="checkbox"> <a href="#" id="agreement_open" > 이용약관</a>에 동의합니다.
-=======
         <input id="agree" type="checkbox"> <a href="#" id="agreement_open" > 이용약관</a>에 동의합니다.
->>>>>>> 3c1ae5a5dd2d8ec5abb808dca95a55e6074a3eb9
     </label>
     </div>
   </div>
