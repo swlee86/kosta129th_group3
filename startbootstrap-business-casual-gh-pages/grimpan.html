@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <title>Canvas</title>
+ 
+ 
+   <style type = "text/css">
+   body{margin:20px;}/*body에 20px만큼의 여백을 줌  */
+   canvas{cursor:crosshair; /* 커서의 형태는 crosshair(십자모양) */
+   border:solid 2px #000; /* 2px의 외곽선 #000색  */ 
+   margin: 15px 0; /* 좌측 여백의 디폴트값을 변경 */
+   -webkit-box-shadow:1px 1px 20px #000; /* 사파리, Webkit에서 구현 */
+   -moz-box-shadow:1px 1px 20px #000;/* 파이어폭스에서의 구현 */
+   box-shadow:1px 1px 20px #000; 
+   /* 그림자 효과 추가하기(순서대로 : 가로, 세로, 번지기 정도, 그림자의 색상)*/}
+   input {border:1px solid #000;}/* 모든 스타일에 1px의 외곽선을 제공  */
+   </style>
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+
+   
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+ 
+ <script>
+ var canvas; //document.getElementById("canvas")를 담을 변수
+ var ctx; //canvas.getContext("2d")를 받을 변수
+ var flag = false; //flag는 마우스 클릭을 통해 drawing을 시작할 것인지를 
+                //판단하는 변수로 사용되었다.
+ 
+ var ready = function(){//ready함수
+ canvas = document.getElementById("canvas"); 
+ //body의 canvas를 가져왔다. canvas는 도화지의 역할만 하며, 
+ //canvas요소 자체로는 그래픽을 표현하는 것이 불가능하므로 자바스크립트의 도움이 필요하다.
+ ctx = canvas.getContext("2d"); 
+ //getContext("2d")메서드는 2D 그래픽(사각형, 선, 원, 그림자 등)을 사용하게 해줍니다.
+ //일종의 권한을 부여한다고 보면 됩니다.
+ canvas.onmousedown = drawStart; 
+ //캔버스에 마우스를 눌렀을 때, drawStart 함수를 넣는다.
+ canvas.onmousemove = drawing;
+ //캔버스에서 마우스 포인터를 움직일때 drawing 함수를 넣는다
+ window.onmouseup = drawEnd;
+ //윈도우 내에서 마우스 버튼을 뗐을 때 drawEnd 함수를 넣는다. 
+ 
+ //onmouse(마우스 효과)
+ //1)onmouseover = 사용자가 요소 위에 마우스를 가져다 댔을 때 이벤트가 발생하는 경우
+ //2)onmouseout = 사용자가 요소 위에 마우스를 떼고 있을 때 이벤트가 발생하는 경우
+ //3)onmousedown = 사용자가 요소 위에 마우스를 눌렀을 때 이벤트가 발생하는 경우
+ //4)onmousemove = 사용자가 요소 위에서 마우스 포인터를 이동할 때 이벤트가 발생하는 경우
+ //5)onmouseup = 사용자가 요소 위에서 마우스의 버튼을 뗐을 때 이벤트가 발생하는 경우
+ }
+
+  var w1 = function(){ //canvas.getContext("2d").lineWidth
+   ctx.lineWidth = 0.1; //라인굵기 0.1
+  }//캔버스에서 사용. lineWidth : 선폭의 속성 집합 또는 픽셀의 단위
+  var w5 = function(){
+   ctx.lineWidth = 5; //라인굵기 5
+  }
+  var w15 = function(){
+   ctx.lineWidth = 15; //라인굵기 15
+  }
+  var black = function(){//canvas.getContext("2d").strokeStyle
+   ctx.strokeStyle = '#000000'; //검정
+  }//캔버스에서 사용. 사용되는 색상, 그라디언트, 또는 패턴을 반환
+  var red = function(){
+   ctx.strokeStyle = '#ff0000'; //빨강
+  }
+  var green = function(){
+   ctx.strokeStyle = '#00ff00'; //녹색
+  }
+  var blue = function(){
+   ctx.strokeStyle = '#0000ff'; //파란색
+  }
+  var yellow = function(){
+   ctx.strokeStyle = '#ffff00'; //노란색
+  }
+  
+  var drawStart = function(event){//drawStart에 해당 event속성을 넣는다.
+   ctx.beginPath();
+   /* beingPath()메서드는 경로를 시작하거나 경로를 재설정하는데 사용 */
+   var xpos = event.target.offsetLeft; 
+   var ypos = event.target.offsetTop;
+   //target(현재 마우스가 위치한 지점)을 기준으로 하여 각각 위쪽과, 왼쪽을 의미한다.
+   //즉, 이는 각각 x축 죄표와 y축 좌표 그 자체를 의미하고 있으므로 
+   //xpos에 들어간 값은 현재 타겟이 되어있는 x좌표 
+   //ypos에 들어간 값은 현재 타겟이 되어있는 y좌표이다.
+   
+   /* [offset]
+   1)offsetLeft   : 부모요소를 기준으로 한 좌표의 지점(왼쪽)
+   2)offsetTop    : 부모요소를 기준으로 한 좌표의 지점(위쪽)
+   3)offsetHeight : 해당 요소의 높이 사이즈
+   4)offsetwidth  : 해당 요소의 너비 사이즈
+   */
+   ctx.moveTo(event.clientX-xpos, event.clientY-ypos);
+   //클라이언트의 X값
+   
+   //style.left와 style.top이 문서 전체의 좌측 상단을 기준으로 측정된 좌표값이고
+   //event.clientX와 event.clientY는 
+   //브라우저 클라이언트의 영역의 좌측 상단을 기준으로 측정된 좌표를 의미한다.
+   flag = true; //클릭을 하고 난 후 flag는 true
+  }
+  var drawing = function(event){
+   if(flag) { //flag에 true값이 들어온다면 if문을 탄다.
+   var xpos = event.target.offsetLeft; 
+   var ypos = event.target.offsetTop;
+   //위와 동일하게 현재 타겟의 x좌표와 y좌표를 넣어준다.
+   ctx.lineCap = 'round'
+   //선의 끝부분 형태는 둥글게 그 외에는 (square, butt)가 있다.
+   ctx.lineTo(event.clientX-xpos, event.clientY-ypos);
+   //캔버스의 lineTo메서드는 처음 찍은 점의 좌표와 이후 찍은 점의 좌표를 이어 선을 긋는
+   //함수인데, 여기서는 마우스가 이동하는동안(클릭이 유지되는 동안) 계속 선이 유지되므로
+   //펜으로 그림을 그리는 것 같은 기능을 구현하는데 쓰였다.
+   ctx.stroke();
+   //위에서 정의한 선긋기 등의 선을 실제로 그어 화면에 나타낸다.
+   //stroke()함수를 쓰지 않으면 아무것도 그려지지 않는다.
+   }
+  }
+  var drawEnd = function(event){
+   flag = false;  
+   //마우스가 떨어지는 순간, flag값은 false로 바뀌어 draw는 더이상 이루어지지 않는다.
+  }
+  
+  var save = function(){
+   window.open(canvas.toDataURL());
+  }
+  
+  var erase = function(){
+   ctx.clearRect(0,0,canvas.width,canvas.height);
+   //clearRect함수는 사각형 범위안에 있는 모든 것을 지우는 함수인데
+   //커서랑 크기를 지정할 수 있다면...(지우개나 다름 없다)
+   //여기서는 X축 좌표를 0, Y축 좌표를 0으로 하며, 
+   //너비는(오른쪽으로 캔버스의 넓이만큼), 높이는(아래쪽으로 캔버스의 높이만큼)
+   //지우도록 하였으므로, 모든 범위가 지워진다.
+  }
+ </script>
+</head>
+
+
+<body onload="ready()"> 
+<!--  onload를 사용하여 ready함수의 이벤트를 발생시켰다 -->
+<!-- onload 이벤트 : onload는 브라우저의 문서를 읽어올 때 발생하는 이벤트이다 -->
+<!-- window:onload와 body onload의 방식이 있으며, 우선순위는 body이다 -->
+ <div class="intro-text text-center">
+ <br>
+  <!-- 메뉴들의 타입은 전부 버튼의 형식, 값은 각각의 형태로, 클릭할 때에 함수로 이동한다 -->
+   
+    <Button type="button" class="btn btn-default" value="PNG파일로 저장" onclick="save()">PNG파일로 저장</Button>
+    <Button type="button" class="btn btn-default" value="새로 그리기" onclick="erase()">새로 그리기</Button>
+                <Button type="button" class="btn btn-default" value="펜 굵게" onclick="w15()">펜 굵게</Button>
+                <Button type="button" class="btn btn-default" value="펜 보통" onclick="w5()">펜 보통</Button>
+                <Button type="button" class="btn btn-default" value="펜 얇게" onclick="w1()">펜 얇게</Button>
+                <Button type="button" class="btn btn-inverse" value="검정" onclick="black()">검정</Button>
+                <Button type="button" class="btn btn-danger" value="빨강" onclick="red()">빨강</Button>
+                <Button type="button" class="btn btn-primary" value="파랑" onclick="blue()">파랑</Button>
+                <Button type="button" class="btn btn-success" value="초록" onclick="green()">초록</Button>
+                <Button type="button" class="btn btn-warning"  value="노랑" onclick="yellow()">노랑</Button>
+ </div>
+ <canvas id="canvas" width="1105" height="500"></canvas>
+</body>
+
+
+</html>
+ 
