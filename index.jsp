@@ -191,35 +191,27 @@ font-weight: bold;
 <body>
 
 <div id="container">
-
+	<!-- Top 영역 -->
 	<div id="header">
 	<jsp:include page="/CommonModule/Top.jsp"></jsp:include>
 	</div>
 
 
-	<!--메뉴영역-->
+	<!-- Left 영역-->
 	<div id="leftnav">
 	<jsp:include page="/CommonModule/Left.jsp"></jsp:include>
-<!-- 	
-		<ul id="navlist" style="margin-top: 15px">
-		<li><a href="#" id="sign_button" style="background-color: gray">Register</a></li>
-		<li><a href="#"></a></li>
-		<li><a href="#" id="open_button" style="background-color: gray">Login</a></li>
-		</ul>
-	 -->
 	</div>
 	
 	
-
+	<!-- Content 영역-->
 	<div id="content">
 		<jsp:include page="/CommonModule/Content.jsp"></jsp:include>
 	</div>
 
-
+	<!-- footer 영역(footer도 jsp파일로 작업하여 연결 필요 --> 
 	<div align="center" id="footer">
-	copyright@3조
+		copyright@3조
 	</div>
-
 </div>
 
 
@@ -265,7 +257,7 @@ font-weight: bold;
 	  <h1>회원가입 <small>일반회원가입</small></h1>
     </div>
    </article>
-    <form class="form-horizontal" action="register.jsp" method="post">
+    <form class="form-horizontal" action="/CommonModule/register.jsp" method="post">
     <div class="form-group">
     <label for="inputEmail" class="col-sm-2 control-label">이메일</label>
     <div class="col-sm-6">
