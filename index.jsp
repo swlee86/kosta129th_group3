@@ -82,7 +82,11 @@ $(function(){
 				$("#bookinfo").click(function(){ 
 				$("#content").load('bookmain.html'); 
 				}); 
-			
+			/* 	
+				$("#bookinfo").click(function(){ 
+				$("#content").load('bookmain.html'); 
+				}); 
+			 */
 }); 
 </script>
 
@@ -188,7 +192,7 @@ font-weight: bold;
 
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 
 <div id="container">
 	<!-- Top 영역 -->
@@ -310,7 +314,7 @@ font-weight: bold;
     <label for="inputAgree" class="col-sm-2 control-label">약관 동의</label>
     <div class="col-sm-6 checkbox">
       <label>
-        <input id="agree" type="checkbox"> <a href="/agreement"> 이용약관</a>에 동의합니다.
+        <input id="agree" type="checkbox"> <a href="#" id="agreement_open" > 이용약관</a>에 동의합니다.
     </label>
     </div>
   </div>
