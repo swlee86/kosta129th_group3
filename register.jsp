@@ -26,11 +26,13 @@ ResultSet rs = null;
 	 if(rs.next()){
 		 do{
 			 out.print("해당 아이디는 이미 존재합니다.");
+			 return;
 		 }while(rs.next());
 	 }else{
 		 String sql2 = "INSERT INTO homepage(email, name, pswd, phnum)  VALUES('"+email+"','"+name+"','"+pswd+"','"+phnum+"')";
-		 stmt.executeUpdate(sql2);
-		 	out.print("회원가입 완료");
+		 stmt.executeUpdate(sql2);	
+		 out.print("회원가입 완료");
+		 response.sendRedirect("http://192.168.0.140:8090/Kosta129th_home/index.html");
 
 	 }
 

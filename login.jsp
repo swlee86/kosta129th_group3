@@ -19,7 +19,7 @@ ResultSet rs = null;
 	 if(rs.next()){
 		 do{
 			 out.println("로그인 성공");
-			 response.sendRedirect("http://localhost:8090/stydy_go/hul.html");
+			 response.sendRedirect("http://192.168.0.140:8090/Kosta129th_home/index.html");
 		 }while(rs.next());
 		 
 	 }else{
