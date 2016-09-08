@@ -25,6 +25,7 @@ ResultSet rs = null;
   rs=stmt.executeQuery(sql);
 	 if(rs.next()){
 		 do{
+			 response.sendRedirect("http://192.168.0.140:8090/Kosta129th_home/index.html");
 			 out.print("해당 아이디는 이미 존재합니다.");
 			 return;
 		 }while(rs.next());
