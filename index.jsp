@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -49,6 +48,9 @@ $(function(){
 				$('#register_dialog').dialog('open')
 			});
 			
+			$("#contents").click(function(){ 
+				$("#content").load("Canvas_SvgStudy.html"); 
+				}); 
 
 			$("#contents").click(function(){ 
 				$("#content").load("Contents.html"); 
@@ -360,9 +362,7 @@ font-weight: bold;
     <label for="inputAgree" class="col-sm-2 control-label">약관 동의</label>
     <div class="col-sm-6 checkbox">
       <label>
-
         <input id="agree" name="agree" type="checkbox"> <a href="#" id="agreement_open" > 이용약관</a>에 동의합니다.
-        <input id="agree" type="checkbox"> <a href="#" id="agreement_open" > 이용약관</a>에 동의합니다.
     </label>
     </div>
   </div>

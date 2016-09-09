@@ -26,7 +26,7 @@ ResultSet rs = null;
 	 if(rs.next()){
 		 do{
 			 //registerfailed.jsp include 필요
-			 response.sendRedirect("http://192.168.0.140:8090/Kosta129th_home/index.html");
+			 response.sendRedirect("/index.html");
 			 //out.print("해당 아이디는 이미 존재합니다.");
 			 return;
 		 }while(rs.next());
